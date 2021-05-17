@@ -51,12 +51,14 @@ conda env create --file gatk4_pipeline.yml
         - `launch_jointgt.sh` launched the gvcf joint genotyping to cohort vcf step. This is perfomed when you have run all samples through the fastq to gvcf stage.
     - local.conf
         - the main tuneable parameters here are:
-        - 1. `concurrent-job-limit = 5` this is the max number of concurrent jobs that can be spawned by cromwell. This depends on the computational resources available to you. 5 was determined to work reasonably well on a 16 CPU, 64GB RAM Nimbus VM (Pawsey). 
-        - 2. ```
-            call-caching {
+        	- `concurrent-job-limit = 5` this is the max number of concurrent jobs that can be spawned by cromwell. This depends on the computational resources available to you. 5 was determined to work reasonably well on a 16 CPU, 64GB RAM Nimbus VM (Pawsey). 
+        	- 
+        ```
+            	call-caching {
 	        enabled = true
-            }
-            ``` Setting this parameter to `false` will disable call caching (i.e. being able to resume if the job fails before completion). By default, call caching is enabled. 
+            	}
+        ``` 
+	    Setting this parameter to `false` will disable call caching (i.e. being able to resume if the job fails before completion). By default, call caching is enabled. 
     - cromwell.options
         - `cromwell.options` requires editing to provide the directory where you would like the final workflow outputs to be written
 
