@@ -1,0 +1,4 @@
+D09_142	/data/gatk4_multisample/D09_142.hg38.g.vcf.gz	/data/gatk4_multisample/D09_142.hg38.g.vcf.gz.tbi
+D12_371	/data/gatk4_multisample/D12_371.hg38.g.vcf.gz	/data/gatk4_multisample/D12_371.hg38.g.vcf.gz.tbi
+D17_0081	/data/gatk4_multisample/D17_0081.hg38.g.vcf.gz	/data/gatk4_multisample/D17_0081.hg38.g.vcf.gz.tbi
+D18_2175	/data/gatk4_multisample/D18_2175.hg38.g.vcf.gz	/data/gatk4_multisample/D18_2175.hg38.g.vcf.gz.tbi
