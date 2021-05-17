@@ -1,3 +1,4 @@
+# Local Cromwell implementation of GATK4 germline variant calling pipeline
 ## Quick start guide
 ### Installing and preparing environment for GATK4 with Cromwell
 
