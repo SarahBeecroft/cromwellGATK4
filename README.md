@@ -23,7 +23,7 @@ conda env create --file gatk4_pipeline.yml
 
 4. Upload the resource bundle file from IRDS using rclone or filezilla and unpack it with `tar xzvf resource.tar.gz`
 
-5. Set up the config files. Files that you need to edit with the correct paths to your data/jar files are:
+5. Set up the config files. Files that you need to edit with the correct paths to your data/jar files or other specific configurations are:
     - `Multisample_Fastq_to_Gvcf_GATK4_inputs_hg38.json`
     - `Multisample_jointgt_GATK4_inputs_hg38.json`
         - both json files will need the correct paths to you picard and GATK jar files
