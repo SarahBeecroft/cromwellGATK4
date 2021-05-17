@@ -1,17 +1,18 @@
 
 
 ## Quick start guide
-# Installing and preparing environment for GATK4 with Cromwell
+### Installing and preparing environment for GATK4 with Cromwell
 
 1. Clone repository
 ```
 git clone https://github.com/SarahBeecroft/cromwellGATK4.git
-cd gatk4_multisample 
+cd cromwellGATK4
 chmod 777 *.sh
 chmod 777 *.pl
 ```
 
-2. Install Miniconda if you haven’t already. Create Conda environment using the supplied conda environment file
+2. Install [https://docs.conda.io/en/latest/miniconda.html]Miniconda if you haven’t already. Create Conda environment using the supplied conda environment file
+
 ```
 conda env create --file gatk4_pipeline.yml
 ```
