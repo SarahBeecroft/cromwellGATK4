@@ -11,16 +11,16 @@ chmod 777 *.sh
 chmod 777 *.pl
 ```
 
-2. Install [https://docs.conda.io/en/latest/miniconda.html]Miniconda if you haven’t already. Create Conda environment using the supplied conda environment file
+2. Install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) if you haven’t already. Create Conda environment using the supplied conda environment file
 
 ```
 conda env create --file gatk4_pipeline.yml
 ```
 
 3. Download the necessary .jar files
-    + The Cromwell workfow orchestration engine can be downloaded from https://github.com/broadinstitute/cromwell/releases/ 
-    + GATK can be downloaded from https://github.com/broadinstitute/gatk/releases. Unzip the file with `unzip` 
-    + Picard can be downloaded from https://github.com/broadinstitute/picard/releases/
+    - The Cromwell workfow orchestration engine can be downloaded from https://github.com/broadinstitute/cromwell/releases/ 
+    - GATK can be downloaded from https://github.com/broadinstitute/gatk/releases. Unzip the file with `unzip` 
+    - Picard can be downloaded from https://github.com/broadinstitute/picard/releases/
 
 
 4. Upload the resource bundle file from IRDS using rclone or filezilla and unpack it with `tar xzvf resource.tar.gz`
