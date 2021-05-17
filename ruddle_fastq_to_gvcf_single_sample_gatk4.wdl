@@ -310,7 +310,7 @@ task SamToFastqAndBwaMem {
     # set the bash variable needed for the command-line
     bash_ref_fasta=${ref_fasta}
     source /data/miniconda/bin/activate gatk4_pipeline && \
-		java -Dsamjdk.compression_level=${compression_level} -Xms30000m -Xmx30000m -jar /data/gatk4_multisample/picard.jar \
+		java -Dsamjdk.compression_level=${compression_level} -Xms30000m -Xmx30000m -jar /data/cromwellGATK4/picard.jar \
       SamToFastq \
 			INPUT=${input_bam} \
 			FASTQ=/dev/stdout \
@@ -345,7 +345,7 @@ task MergeBamAlignment {
     # set the bash variable needed for the command-line
     bash_ref_fasta=${ref_fasta}
     source /data/miniconda/bin/activate gatk4_pipeline && \
-    /data/gatk4_multisample/gatk-4.2.0.0/gatk --java-options "-Dsamjdk.compression_level=${compression_level} -Xms12000m -Xmx12000m" \
+    /data/cromwellGATK4/gatk-4.2.0.0/gatk --java-options "-Dsamjdk.compression_level=${compression_level} -Xms12000m -Xmx12000m" \
       MergeBamAlignment \
       --VALIDATION_STRINGENCY SILENT \
       --EXPECTED_ORIENTATIONS FR \
@@ -389,7 +389,7 @@ task SortAndFixTags {
   command {
     set -o pipefail
     source /data/miniconda/bin/activate gatk4_pipeline && \
-    /data/gatk4_multisample/gatk-4.2.0.0/gatk --java-options "-Dsamjdk.compression_level=${compression_level} -Xms20000m -Xmx20000m" \
+    /data/cromwellGATK4/gatk-4.2.0.0/gatk --java-options "-Dsamjdk.compression_level=${compression_level} -Xms20000m -Xmx20000m" \
       SortSam \
       --INPUT ${input_bam} \
       --OUTPUT /dev/stdout \
@@ -397,7 +397,7 @@ task SortAndFixTags {
       --CREATE_INDEX false \
       --CREATE_MD5_FILE false \
     | \
-    /data/gatk4_multisample/gatk-4.2.0.0/gatk --java-options "-Dsamjdk.compression_level=${compression_level} -Xms4000m -Xmx4000m" \
+    /data/cromwellGATK4/gatk-4.2.0.0/gatk --java-options "-Dsamjdk.compression_level=${compression_level} -Xms4000m -Xmx4000m" \
       SetNmAndUqTags \
       --INPUT /dev/stdin \
       --OUTPUT ${output_bam_basename}.bam \
@@ -424,7 +424,7 @@ task MarkDuplicates {
 # # Task is assuming query-sorted input so that the Sesourcery and Supplementary reads get marked correctly.
   command {
   source /data/miniconda/bin/activate gatk4_pipeline && \
-  /data/gatk4_multisample/gatk-4.2.0.0/gatk --java-options "-Dsamjdk.compression_level=2 -Xms20000m" \
+  /data/cromwellGATK4/gatk-4.2.0.0/gatk --java-options "-Dsamjdk.compression_level=2 -Xms20000m" \
       MarkDuplicates \
       --INPUT ${sep=' --INPUT ' input_bams} \
       --OUTPUT ${output_bam_basename}.bam \
@@ -507,7 +507,7 @@ task BaseRecalibrator {
 
   command { 
     source /data/miniconda/bin/activate gatk4_pipeline && \
-    /data/gatk4_multisample/gatk-4.2.0.0/gatk --java-options "-Xms12000m -Dsamjdk.use_async_io_read_samtools=true" \
+    /data/cromwellGATK4/gatk-4.2.0.0/gatk --java-options "-Xms12000m -Dsamjdk.use_async_io_read_samtools=true" \
       BaseRecalibrator \
       -R ${ref_fasta} \
       -I ${input_bam} \
@@ -531,7 +531,7 @@ task GatherBqsrReports {
 
   command {
     source /data/miniconda/bin/activate gatk4_pipeline && \
-    /data/gatk4_multisample/gatk-4.2.0.0/gatk --java-options "-Xms8000m -Xmx8000m" \
+    /data/cromwellGATK4/gatk-4.2.0.0/gatk --java-options "-Xms8000m -Xmx8000m" \
       GatherBQSRReports \
       -I ${sep=' -I ' input_bqsr_reports} \
       -O ${output_report_filename}
@@ -555,7 +555,7 @@ task ApplyBQSR {
 
   command {  
     source /data/miniconda/bin/activate gatk4_pipeline && \
-    /data/gatk4_multisample/gatk-4.2.0.0/gatk --java-options "-Xms12000m -Xmx12000m -Dsamjdk.use_async_io_read_samtools=true" \
+    /data/cromwellGATK4/gatk-4.2.0.0/gatk --java-options "-Xms12000m -Xmx12000m -Dsamjdk.use_async_io_read_samtools=true" \
       ApplyBQSR \
       -R ${ref_fasta} \
       -I ${input_bam} \
@@ -581,7 +581,7 @@ task GatherBamFiles {
 
   command {
     source /data/miniconda/bin/activate gatk4_pipeline && \
-    /data/gatk4_multisample/gatk-4.2.0.0/gatk --java-options "-Dsamjdk.compression_level=${compression_level} -Xms12000m -Xmx12000m" \
+    /data/cromwellGATK4/gatk-4.2.0.0/gatk --java-options "-Dsamjdk.compression_level=${compression_level} -Xms12000m -Xmx12000m" \
       GatherBamFiles \
       --INPUT ${sep=' --INPUT ' input_bams} \
       --OUTPUT ${output_bam_basename}.bam \
@@ -613,7 +613,7 @@ task HaplotypeCaller {
   command <<<
   set -e
     source /data/miniconda/bin/activate gatk4_pipeline && \
-    /data/cromwelGATK4/gatk-4.2.0.0/gatk --java-options "-Xmx30000m -Xms30000m ${java_opt} -Dsamjdk.use_async_io_read_samtools=true --native-pair-hmm-threads=10 -pairHMM AVX_LOGLESS_CACHING" \
+    /data/cromwellGATK4/gatk-4.2.0.0/gatk --java-options "-Xmx30000m -Xms30000m ${java_opt} -Dsamjdk.use_async_io_read_samtools=true --native-pair-hmm-threads=10 -pairHMM AVX_LOGLESS_CACHING" \
       HaplotypeCaller \
       -R ${ref_fasta} \
       -I ${input_bam} \
@@ -639,7 +639,7 @@ task MergeGVCFs {
   command <<<
   set -e
   source /data/miniconda/bin/activate gatk4_pipeline && \
-    /data/gatk4_multisample/gatk-4.2.0.0/gatk --java-options "-Xmx60000m -Xms60000m"  \
+    /data/cromwellGATK4/gatk-4.2.0.0/gatk --java-options "-Xmx60000m -Xms60000m"  \
       MergeVcfs \
       --INPUT ${sep=' --INPUT ' input_vcfs} \
       --OUTPUT ${output_filename}
