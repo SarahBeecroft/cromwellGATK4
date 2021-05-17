@@ -1,0 +1,6 @@
+ERR194146	ERR194146_D0CC8ACXX	/data/gatk4_multisample/ERR194146_1.fastq.gz  /data/gatk4_multisample/ERR194146_2.fastq.gz
+ERR194147	ERR194147_C0D8DACXX	/data/gatk4_multisample/ERR194147_1.fastq.gz	/data/gatk4_multisample/ERR194147_2.fastq.gz
+ERR194158	ERR194158_D0UYCACXX	/data/gatk4_multisample/ERR194158_1.fastq.gz	/data/gatk4_multisample/ERR194158_2.fastq.gz
+ERR194159	ERR194159_C0L01ACXX	/data/gatk4_multisample/ERR194159_1.fastq.gz	/data/gatk4_multisample/ERR194159_2.fastq.gz
+ERR194160	ERR194160_C0JVFACXX	/data/gatk4_multisample/ERR194160_1.fastq.gz	/data/gatk4_multisample/ERR194160_2.fastq.gz
+ERR194161	ERR194161_D0UYCACXX	/data/gatk4_multisample/ERR194161_1.fastq.gz	/data/gatk4_multisample/ERR194161_2.fastq.gz
