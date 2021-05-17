@@ -1,0 +1,5 @@
+{
+    "final_workflow_outputs_dir": "/data/cromwellGATK4/",
+    "final_workflow_log_dir": "/data/cromwellGATK4/",
+    "final_call_logs_dir": "/data/cromwellGATK4/"
+}
