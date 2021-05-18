@@ -1,8 +1,18 @@
 # Local Cromwell implementation of GATK4 germline variant calling pipeline
+See the [GATK](https://gatk.broadinstitute.org/hc/en-us) website for more information on this toolset 
 ## Assumptions
 - Using hg38 human reference genome build
 - Running 'locally' i.e. not using HPC/SLURM scheduling, or containers. This repo was specifically tested on Pawsey Nimbus 16 CPU, 64GB RAM virtual machine, primarily running in the `/data` volume storage partition. 
 - Starting from short-read Illumina paired-end fastq files as input
+
+### Dependencies
+The following versions have been tested and work, but GATK and Cromwell are regularly updated and so one must consider whether they would like to use newer versions of these tools. 
+- BWA/0.7.15
+- GATK v4.0.6.0
+- SAMtools/1.5
+- picard/2.9
+- Python/2.7
+- Cromwell v61
 
 ## Quick start guide
 ### Installing and preparing environment for GATK4 with Cromwell
@@ -91,12 +101,3 @@ CollectVariantCallingMetrics
 GatherMetrics
 DynamicallyCombineIntervals
 ```
-
-### Dependencies
-The following versions have been tested and work, but GATK and Cromwell are regularly updated and so one must consider whether they would like to use newer versions of these tools. 
-- BWA/0.7.15
-- GATK v4.0.6.0
-- SAMtools/1.5
-- picard/2.9
-- Python/2.7
-- Cromwell v61
