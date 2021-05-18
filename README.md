@@ -1,8 +1,8 @@
 # Local Cromwell implementation of GATK4 germline variant calling pipeline
 ## Assumptions
 - Using hg38 human reference genome build
-- Running cromwell 'locally' i.e. not using HPC/SLURM scheduling, or containers
-- Starting from Illumina paired-end fastq files as input
+- Running 'locally' i.e. not using HPC/SLURM scheduling, or containers. This repo was specifically tested on Pawsey Nimbus 16 CPU, 64GB RAM virtual machine, primarily running in the `/data` volume storage partition. 
+- Starting from short-read Illumina paired-end fastq files as input
 
 ## Quick start guide
 ### Installing and preparing environment for GATK4 with Cromwell
@@ -74,7 +74,7 @@ MergeGVCFs
 ```
 
 ### Overview of the steps in `Multisample_jointgt_GATK4.wdl`
-This part of the pipeline takes GVCF files (one per sample), and performs joint genotyping across all of the provided samples. This means that old previously generated GVCFs can be joint-called with new GVCFs whenever you need to add new samples. 
+This part of the pipeline takes GVCF files (one per sample), and performs joint genotyping across all of the provided samples. This means that old previously generated GVCFs can be joint-called with new GVCFs whenever you need to add new samples. The key output from this is a joint-genotyped, cohort-wide VCF file. This file can be used for a GEMINI database after normalisation with VT and annotation with a tool such as VEP or SNPEFF. 
 
 ```
 GetNumberOfSamples
@@ -93,9 +93,10 @@ DynamicallyCombineIntervals
 ```
 
 ### Dependencies
+The following versions have been tested and work, but GATK and Cromwell are regularly updated and so one must consider whether they would like to use newer versions of these tools. 
 - BWA/0.7.15
-- GATK >=4.0.6.0
+- GATK v4.0.6.0
 - SAMtools/1.5
 - picard/2.9
 - Python/2.7
-- Cromwell
+- Cromwell v61
