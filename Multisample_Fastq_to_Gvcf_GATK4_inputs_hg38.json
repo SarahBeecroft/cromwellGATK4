@@ -1,0 +1,34 @@
+{
+  "##_COMMENT1": "SAMPLES",
+  "Multisample_Fastq_to_Gvcf_GATK4.inputSamplesFile": "samples.txt",
+  "Multisample_Fastq_to_Gvcf_GATK4.ref_name": "hg38",
+  "Multisample_Fastq_to_Gvcf_GATK4.unmapped_bam_suffix": ".bam",
+
+  "##_COMMENT2": "REFERENCE FILES",
+  "Multisample_Fastq_to_Gvcf_GATK4.scattered_calling_intervals_list": "/data/hg38/v0/hg38_wgs_scattered_calling_intervals.txt", 
+  "Multisample_Fastq_to_Gvcf_GATK4.ref_dict": "/data/hg38/v0/Homo_sapiens_assembly38.dict",
+  "Multisample_Fastq_to_Gvcf_GATK4.ref_fasta": "/data/hg38/v0/Homo_sapiens_assembly38.fasta",
+  "Multisample_Fastq_to_Gvcf_GATK4.ref_fasta_index": "/data/hg38/v0/Homo_sapiens_assembly38.fasta.fai",
+  "Multisample_Fastq_to_Gvcf_GATK4.ref_alt": "/data/hg38/v0/Homo_sapiens_assembly38.fasta.64.alt",
+  "Multisample_Fastq_to_Gvcf_GATK4.ref_sa": "/data/hg38/v0/Homo_sapiens_assembly38.fasta.64.sa",
+  "Multisample_Fastq_to_Gvcf_GATK4.ref_amb": "/data/hg38/v0/Homo_sapiens_assembly38.fasta.64.amb",
+  "Multisample_Fastq_to_Gvcf_GATK4.ref_bwt": "/data/hg38/v0/Homo_sapiens_assembly38.fasta.64.bwt",
+  "Multisample_Fastq_to_Gvcf_GATK4.ref_ann": "/data/hg38/v0/Homo_sapiens_assembly38.fasta.64.ann",
+  "Multisample_Fastq_to_Gvcf_GATK4.ref_pac": "/data/hg38/v0/Homo_sapiens_assembly38.fasta.64.pac",
+  
+  "##_COMMENT3": "KNOWN SITES RESOURCES", 
+  "Multisample_Fastq_to_Gvcf_GATK4.dbSNP_vcf": "/data/hg38/v0/Homo_sapiens_assembly38.dbsnp138.vcf",
+  "Multisample_Fastq_to_Gvcf_GATK4.dbSNP_vcf_index": "/data/hg38/v0/Homo_sapiens_assembly38.dbsnp138.vcf.idx",
+  "Multisample_Fastq_to_Gvcf_GATK4.known_indels_sites_VCFs": [
+    "/data/hg38/v0/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz",
+    "/data/hg38/v0/Homo_sapiens_assembly38.known_indels.vcf.gz"
+  ],
+  "Multisample_Fastq_to_Gvcf_GATK4.known_indels_sites_indices": [
+    "/data/hg38/v0/Mills_and_1000G_gold_standard.indels.hg38.vcf.gz.tbi",
+    "/data/hg38/v0/Homo_sapiens_assembly38.known_indels.vcf.gz.tbi"
+  ],
+
+  "##_COMMENT4": "MISC PROGRAM PARAMETERS", 
+  "Multisample_Fastq_to_Gvcf_GATK4.bwa_commandline": "bwa mem -p -v 3 -t 16 -Y $bash_ref_fasta",
+  "Multisample_Fastq_to_Gvcf_GATK4.compression_level": 2
+}
