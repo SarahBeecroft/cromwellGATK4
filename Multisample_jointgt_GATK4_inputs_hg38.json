@@ -1,5 +1,5 @@
 {  
-  "##_COMMENT1": "INPUT GVCFs & COHORT -- DATASET-SPECIFC, MUST BE ADAPTED",
+  "##_COMMENT1": "INPUT GVCFs & COHORT -- DATASET-SPECIFC, MUST BE ADAPTED. CALLSET NAME IS THE PREFIX FOR YOUR FINAL OUTPUT FILES",
   "JointGenotyping.sample_sheet": "gvcfs.txt",
   "JointGenotyping.callset_name": "wgs_hg38",
 
