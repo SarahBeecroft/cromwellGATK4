@@ -7,7 +7,6 @@
 git clone https://github.com/SarahBeecroft/cromwellGATK4.git
 cd cromwellGATK4
 chmod 777 *.sh
-chmod 777 *.pl
 ```
 
 2. Install [Miniconda](https://docs.conda.io/en/latest/miniconda.html) if you haven’t already. Create Conda environment using the supplied conda environment file
