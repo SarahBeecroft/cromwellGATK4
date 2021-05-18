@@ -66,7 +66,7 @@ conda env create --file gatk4_pipeline.yml
         - The paths to your jar files will need to be updated
         - The path to your conda `activate` binary will need to be updated (e.g. `/data/miniconda/bin/activate`)
 
-6. Launch the job within a `screen` or `tmux` session, using `./launch_cromwell.sh`. When that has completed successfully, you can launch the second stage of the pipeline (joint calling) with `./launch_jointgt.sh`
+6. Launch the job within a `screen` or `tmux` session, using `./launch_cromwell.sh`. When that has completed successfully, you can launch the second stage of the pipeline (joint calling) with `./launch_jointgt.sh`. Ensure you pipe the stdout and stderr to a log file using (for example) `./launch_cromwell.sh &> cromwell.log`
 
 ### Overview of the steps in `Multisample_Fastq_to_Gvcf_GATK4.wdl`
 This part of the pipeline takes short-read, Illumina paired-end fastq files as the input. The outputs generated are sorted, duplicate marked bam files and their indices, duplicate metric information, and a GVCF file for each sample. The GVCF files are used as input for the second part of the pipeline (joint genotyping).
