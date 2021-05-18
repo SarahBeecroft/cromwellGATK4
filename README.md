@@ -1,4 +1,9 @@
 # Local Cromwell implementation of GATK4 germline variant calling pipeline
+## Assumptions
+- Using hg38 human reference genome build
+- Running cromwell 'locally' i.e. not using HPC/SLURM scheduling, or containers
+- Starting from Illumina paired-end fastq files as input
+
 ## Quick start guide
 ### Installing and preparing environment for GATK4 with Cromwell
 
@@ -49,7 +54,8 @@ conda env create --file gatk4_pipeline.yml
 
 6. Launch the job within a `screen` or `tmux` session, using `./launch_cromwell.sh`. When that has completed successfully, you can launch the second stage of the pipeline (joint calling) with `./launch_jointgt.sh`
 
-### Overview of the steps in the pipeline
+### Overview of the steps in `Multisample_Fastq_to_Gvcf_GATK4.wdl`
+This part of the pipeline takes short-read, Illumina paired-end fastq files as the input. The outputs generated are sorted, duplicate marked bam files and their indices, duplicate metric information, and a GVCF file for each sample. The GVCF files are used as input for the second part of the pipeline (joint genotyping).
 
 ```
 FastqToUbam
@@ -67,10 +73,29 @@ HaplotypeCaller
 MergeGVCFs
 ```
 
+### Overview of the steps in `Multisample_jointgt_GATK4.wdl`
+This part of the pipeline takes GVCF files (one per sample), and performs joint genotyping across all of the provided samples. This means that old previously generated GVCFs can be joint-called with new GVCFs whenever you need to add new samples. 
+
+```
+GetNumberOfSamples
+ImportGVCFs
+GenotypeGVCFs
+HardFilterAndMakeSitesOnlyVcf
+IndelsVariantRecalibrator
+SNPsVariantRecalibratorCreateModel
+SNPsVariantRecalibrator
+GatherTranches
+ApplyRecalibration
+GatherVcfs
+CollectVariantCallingMetrics
+GatherMetrics
+DynamicallyCombineIntervals
+```
+
 ### Dependencies
-    -BWA/0.7.15
-    -GATK >=4.0.6.0
-    -SAMtools/1.5
-    -picard/2.9
-    -Python/2.7
-    -Cromwell
+- BWA/0.7.15
+- GATK >=4.0.6.0
+- SAMtools/1.5
+- picard/2.9
+- Python/2.7
+- Cromwell
