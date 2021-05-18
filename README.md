@@ -64,6 +64,7 @@ conda env create --file gatk4_pipeline.yml
     - `Multisample_Fastq_to_Gvcf_GATK4.wdl`
     - `ruddle_fastq_to_gvcf_single_sample_gatk4.wdl`
         - The paths to your jar files will need to be updated
+        - The path to your conda `activate` binary will need to be updated (e.g. `/data/miniconda/bin/activate`)
 
 6. Launch the job within a `screen` or `tmux` session, using `./launch_cromwell.sh`. When that has completed successfully, you can launch the second stage of the pipeline (joint calling) with `./launch_jointgt.sh`
 
