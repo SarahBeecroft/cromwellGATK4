@@ -1,7 +1,7 @@
 {  
   "##_COMMENT1": "INPUT GVCFs & COHORT -- DATASET-SPECIFC, MUST BE ADAPTED",
-  "JointGenotyping.sample_sheet": "gvcfs_hg38.list",
-  "JointGenotyping.callset_name": "wgs_four_hg38",
+  "JointGenotyping.sample_sheet": "gvcfs.txt",
+  "JointGenotyping.callset_name": "wgs_hg38",
 
   "##_COMMENT2": "REFERENCE FILES",
   "JointGenotyping.ref_fasta": "/data/resource/Homo_sapiens_assembly38.fasta",
