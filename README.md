@@ -61,6 +61,9 @@ conda env create --file gatk4_pipeline.yml
         	- `call-caching enabled = true`. Setting this parameter to `false` will disable call caching (i.e. being able to resume if the job fails before completion). By default, call caching is enabled. 
     - `cromwell.options`
         - `cromwell.options` requires editing to provide the directory where you would like the final workflow outputs to be written
+    - `Multisample_Fastq_to_Gvcf_GATK4.wdl`
+    - `ruddle_fastq_to_gvcf_single_sample_gatk4.wdl`
+        - The paths to your jar files will need to be updated
 
 6. Launch the job within a `screen` or `tmux` session, using `./launch_cromwell.sh`. When that has completed successfully, you can launch the second stage of the pipeline (joint calling) with `./launch_jointgt.sh`
 
