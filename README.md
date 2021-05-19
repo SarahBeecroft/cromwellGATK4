@@ -36,7 +36,12 @@ conda env create --file gatk4_pipeline.yml
     - Picard can be downloaded from https://github.com/broadinstitute/picard/releases/
 
 
-4. Upload the resource bundle file from IRDS using rclone or filezilla and unpack it with `tar xzvf resource.tar.gz`
+4. Upload the resource bundle file from IRDS using rclone or filezilla and unpack it with `tar xzvf resource.tar.gz`. Note that the `hg38_wgs_scattered_calling_intervals.txt` will need to be to generated using the following:
+
+```
+cd <your_resource_dir>
+find `pwd` -name "scattered.interval_list" -print | sort > hg38_wgs_scattered_calling_intervals.txt
+```
 
 5. Set up the config files. Files that you need to edit with the correct paths to your data/jar files or other specific configurations are:
     - `Multisample_Fastq_to_Gvcf_GATK4_inputs_hg38.json`
