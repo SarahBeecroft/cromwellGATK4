@@ -50,7 +50,7 @@ find `pwd` -name "scattered.interval_list" -print | sort > hg38_wgs_scattered_ca
     - `samples.txt`
     - `gvcfs.txt`
         - These are the sample input files (tab seperated)
-        - The format for samples.txt is sample ID, fastq R1 location and file name, fastq R2 location and file name
+        - The format for samples.txt is sampleID, sampleID_readgroup, path_to_fastq_R1_file, path_to_fastq_R2_file,
         - The format for gvcfs.txt is sample ID, gvcf, gvcf .tbi index file
         - Examples are included in this repo
         - NOTE: Having tabs, not spaces, is vital for parsing the file. Visual studio code tends to introduce spaces, so if you are having issues, check the file with another text editor such as sublime. 
