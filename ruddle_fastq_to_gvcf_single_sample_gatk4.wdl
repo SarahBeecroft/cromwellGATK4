@@ -612,7 +612,7 @@ task HaplotypeCaller {
   command <<<
   set -e
     source /data/miniconda/bin/activate gatk4_pipeline && \
-    /data/cromwellGATK4/gatk-4.2.0.0/gatk --java-options "-Xmx30000m -Xms30000m ${java_opt} -Dsamjdk.use_async_io_read_samtools=true --native-pair-hmm-threads=10 -pairHMM AVX_LOGLESS_CACHING" \
+    /data/cromwellGATK4/gatk-4.2.0.0/gatk --java-options "-Xmx10000m -Xms10000m ${java_opt} -Dsamjdk.use_async_io_read_samtools=true" \
       HaplotypeCaller \
       -R ${ref_fasta} \
       -I ${input_bam} \
@@ -638,7 +638,7 @@ task MergeGVCFs {
   command <<<
   set -e
   source /data/miniconda/bin/activate gatk4_pipeline && \
-    /data/cromwellGATK4/gatk-4.2.0.0/gatk --java-options "-Xmx60000m -Xms60000m"  \
+    /data/cromwellGATK4/gatk-4.2.0.0/gatk --java-options "-Xmx40000m -Xms40000m"  \
       MergeVcfs \
       --INPUT ${sep=' --INPUT ' input_vcfs} \
       --OUTPUT ${output_filename}
