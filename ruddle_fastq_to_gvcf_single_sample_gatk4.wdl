@@ -261,10 +261,7 @@ task FastqToUbam {
     PLATFORM=ILLUMINA
   }
 
-  runtime {
-    cpus: 4
-    requested_memory: 10000
-  }
+
   output {
     File unmapped_bam = "${outpref}.unmapped.bam"
   }
@@ -282,10 +279,7 @@ task GetBwaVersion {
     grep -e '^Version' | \
     sed 's/Version: //'
   }
-  runtime {
-    cpus: 4
-    requested_memory: 1000
-  }
+
   output {
     String version = read_string(stdout())
   }
@@ -331,10 +325,7 @@ task SamToFastqAndBwaMem {
 		samtools view -1 - > ${output_bam_basename}.bam
 
   >>>
-  runtime {
-    cpus: 16
-    requested_memory: 64000
-  }
+
   output {
     File output_bam = "${output_bam_basename}.bam"
     File bwa_stderr_log = "${output_bam_basename}.bwa.stderr.log"
@@ -384,10 +375,7 @@ task MergeBamAlignment {
       --ALIGNER_PROPER_PAIR_FLAGS true \
       --UNMAP_CONTAMINANT_READS true
   }
-  runtime {
-    cpus: 4
-    requested_memory: 8000
-  }
+
   output {
     File output_bam = "${output_bam_basename}.bam"
   }
@@ -423,10 +411,7 @@ task SortAndFixTags {
       --CREATE_MD5_FILE true \
       --REFERENCE_SEQUENCE ${ref_fasta}
   }
-  runtime {
-    cpus: 8
-    requested_memory: 32000
-  }
+
   output {
     File output_bam = "${output_bam_basename}.bam"
     File output_bam_index = "${output_bam_basename}.bai"
@@ -447,7 +432,7 @@ task MarkDuplicates {
  # While query-grouped isn't actually query-sorted, it's good enough for MarkDuplicates with ASSUME_SORT_ORDER="queryname"
   command {
     source /data/miniconda/bin/activate gatk4_pipeline && \
-    /data/cromwellGATK4/gatk-4.2.0.0/gatk --java-options "-Dsamjdk.compression_level=${compression_level} -Xms40000m" \
+    /data/cromwellGATK4/gatk-4.2.0.0/gatk --java-options "-Dsamjdk.compression_level=${compression_level} -Xms30000m" \
       MarkDuplicates \
       --INPUT ${sep=' --INPUT ' input_bams} \
       --OUTPUT ${output_bam_basename}.bam \
@@ -457,10 +442,7 @@ task MarkDuplicates {
       --ASSUME_SORT_ORDER "queryname" \
       --CREATE_MD5_FILE true
   }
-  runtime {
-    cpus: 8
-    requested_memory: 48000
-  }
+
   output {
     File output_bam = "${output_bam_basename}.bam"
     File duplicate_metrics = "${metrics_filename}"
@@ -511,10 +493,7 @@ task CreateSequenceGroupingTSV {
       tsv_file_with_unmapped.close()
     CODE
   >>>
-  runtime {
-    cpus: 2
-    requested_memory: 4000
-  }
+
   output {
     Array[Array[String]] sequence_grouping = read_tsv("sequence_grouping.txt")
     Array[Array[String]] sequence_grouping_with_unmapped = read_tsv("sequence_grouping_with_unmapped.txt")
@@ -548,10 +527,7 @@ task BaseRecalibrator {
       --known-sites ${sep=" --known-sites " known_indels_sites_VCFs} \
       -L ${sep=" -L " sequence_group_interval}
   }
-  runtime {
-    cpus: 4
-    requested_memory: 16000
-  }
+
   output {
     File recalibration_report = "${recalibration_report_filename}"
   }
@@ -571,10 +547,7 @@ task GatherBqsrReports {
       -I ${sep=' -I ' input_bqsr_reports} \
       -O ${output_report_filename}
     }
-  runtime {
-    cpus: 2
-    requested_memory: 4000
-  }
+
   output {
     File output_bqsr_report = "${output_report_filename}"
   }
@@ -606,10 +579,7 @@ task ApplyBQSR {
       --create-output-bam-md5 \
       --use-original-qualities
   }
-  runtime {
-    cpus: 4
-    requested_memory: 16000
-  }
+
   output {
     File recalibrated_bam = "${output_bam_basename}.bam"
   }
@@ -631,10 +601,7 @@ task GatherBamFiles {
       --CREATE_INDEX true \
       --CREATE_MD5_FILE true
     }
-  runtime {
-    cpus: 4
-    requested_memory: 12000
-  }
+
   output {
     File output_bam = "${output_bam_basename}.bam"
     File output_bam_index = "${output_bam_basename}.bai"
@@ -671,11 +638,6 @@ task HaplotypeCaller {
       -ERC GVCF
   >>>
 
-  runtime {
-    cpus: 4
-    requested_memory: 16000
-  }
-
   output {
     File output_vcf = "${output_filename}"
     File output_vcf_index = "${output_filename}.tbi"
@@ -698,12 +660,6 @@ task MergeGVCFs {
       --INPUT ${sep=' --INPUT ' input_vcfs} \
       --OUTPUT ${output_filename}
   >>>
-
-  runtime {
-    cpus: 8
-    requested_memory: 16000
-  }
-
 
   output {
     File output_vcf = "${output_filename}"
